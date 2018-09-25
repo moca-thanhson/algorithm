@@ -1,0 +1,19 @@
+Exercise 1 : 
+ max(O(n) , O(m))
+ 
+ Exercise 2 :
+  complexity: O(N2) 
+  
+  space : O(1)
+  
+  O(log(N) * 
+  
+ Exercise 3 : O(n)
+ 
+ Exercise 4: 
+  O(n/2) * O(log(n)) = n * logN
+  
+  Exercise 5:
+  space : O(n)
+  
+  

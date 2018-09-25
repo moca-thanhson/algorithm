@@ -1,0 +1,22 @@
+Complexity of algorithm:
+
+1.Logarit log(n): cơ số 
+ n = 16, c = 5
+ n = c ^ k => k = log of c (n)
+
+2. TS(traveling salesman problem) : thuật toán xấp xỉ.
+
+
+================================================================================================
+2 techniques : 
+ Phương pháp đếm phân phối (Distribution Counting Sort) && (two pointers : Left and Right point ) 
+ - Tạo 1 mảng store input : arr1
+ - Tạo 1 mảng đếm số xuất hiện : arr2
+ - Chạy R để xác định : 
+  + đồng thời tăng số xuất hiện và update trong arr2
+  + tăng count_k = số xuất hiện  
+ - Sau đó chạy L để loại mảng con  : giảm số lần xuất hiện của element arr1 trong arr2.
+ 
+ 
+
+

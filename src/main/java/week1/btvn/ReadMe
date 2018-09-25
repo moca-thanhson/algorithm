@@ -1,0 +1,53 @@
+518_A:
+
+----------------------------------------------------------------------------------------------------------------------
+Main point : We should traverse from end to begin of string to find the between string.
+B1: Read Input
+ String s;
+ String t;
+B2: 
+ for(i = s.size() - 1; --> i = 0) {
+  if(s[i] == 'z') {
+     s[i] = 'a';
+  }
+  else {
+     s[i] ++;
+     break;
+  }
+ }
+ 
+ if(s != t) { 
+   print : S
+ }
+ else {
+   "No such string";
+ }
+ 
+ 
+ ================================================================================================================================
+ 
+ 242_B:
+  
+   Cho n đoạn thẳng
+   
+   Đoạn thẳng i . [li , ri]
+   
+   =>Tìm đoạn thẳng phủ hết n đoạn
+   1.Tìm thấy => vị trí
+   2. Ko thấy => -1
+   
+   Note : [a,b] phủ [c,d] => a <= c <= d <= 
+   
+B1: Read input
+ Store as two dimension array : [l,r]
+ 
+B2: Find the smallest line which cover n other lines.
+   left = min(li)
+   right = max(r1)
+   with i = 1->n
+   Result : [left, right].
+
+B3: Check exist any line satisfied with Result [minLeft, maxRight].
+ 
+  
+ 
