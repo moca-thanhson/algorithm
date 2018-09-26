@@ -1,0 +1,25 @@
+ n human , a(i) (1 <= i <= n)
+ m vest , b(j) ( 1 <= j <= m)
+
+ => Find the maximum of number of human can wear vest
+
+ b(j) suit with a(i) means : b(j) belong [a(i) -x , a(i) + y]
+
+
+  j = 0;
+  i : 0 -> n
+    while(j < m) {
+      if(b[j] in (a[i] - x, a[i] + y) {
+            //store (i,j)
+            j++;
+            break;
+      }
+      else if(b[j] > (a[i] +x)) //vest too big {
+        break;
+      }
+      else { // vest too tight
+        j++;
+      }
+
+    }
+

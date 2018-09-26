@@ -1,0 +1,17 @@
+
+sum = 0
+
+
+  i: 0->n-1
+   count = 0 ;
+   time = t;
+   j : i -> n
+     count + a[j] < time {
+        count++
+     }
+     else {
+        break;
+     }
+ =>>> bigO = O(n2) : Fail
+
+
