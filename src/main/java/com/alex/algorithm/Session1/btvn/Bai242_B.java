@@ -1,6 +1,6 @@
-package week1.btvn;
+package com.alex.algorithm.Session1.btvn;
 
-import week2.onClass.NumberUtil;
+import com.alex.algorithm.Session2.onClass.NumberUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
