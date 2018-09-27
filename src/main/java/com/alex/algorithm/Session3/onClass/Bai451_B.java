@@ -2,49 +2,78 @@ package com.alex.algorithm.Session3.onClass;
 
 import com.alex.algorithm.Session2.onClass.NumberUtil;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Bai451_B {
 
     public static void main(final String[] args) {
 
         final Scanner scanner = new Scanner(System.in);
-        final int numberOfArr = Integer.valueOf(scanner.next());
+        final int numberOfArr = Integer.valueOf(scanner.nextLine());
         final List<Integer> lstOfNumbers = NumberUtil.convertByString(scanner.nextLine());
+
+        findSeqment(numberOfArr, lstOfNumbers);
 
     }
 
-    private static List<Integer> findSeqment(final int numberOfArr, List<Integer> lstOfNumbers) {
-        int startIndex = 0;
-        int endIndex = 0;
-        boolean isFoundSeqment = false;
-        for (int i = numberOfArr - 1; i > 0; i--) {
-            if (!isFoundSeqment) {
-                final int currNum = lstOfNumbers.get(i);
-                final int j = i--;
-                if (currNum < lstOfNumbers.get(j) && endIndex == 0) {
-                    endIndex = i;
-                } else if (endIndex > 0) {
-                    startIndex = i;
-                    isFoundSeqment = true;
+    private static void findSeqment(final int numberOfArr, List<Integer> lstOfNumbers) {
+
+        final List<Integer> sortedArr = new ArrayList<>(lstOfNumbers);
+
+        Collections.sort(sortedArr);
+
+        int left = 0;
+        boolean foundLeft = false;
+        int right = 0;
+        for (int i = 0; i < sortedArr.size(); i++) {
+            final int originalItem = lstOfNumbers.get(i);
+            final int sortedItem = sortedArr.get(i);
+
+            if (originalItem != sortedItem) {
+                if (!foundLeft) {
+                    left = i;
+                    foundLeft = true;
                 }
+                right = i;
             }
         }
 
-        Arrays.sort(lstOfNumbers.toArray(), startIndex, endIndex + 1);
+        if (left == right) {
+            System.out.println("yes");
+            System.out.println(String.format("%s %s", left + 1, right + 1));
+            return;
+        }
 
-        return null;
+
+        final Integer[] lstNumberArr = lstOfNumbers.toArray(new Integer[lstOfNumbers.size()]);
+        Arrays.sort(lstNumberArr, left, right + 1, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1.compareTo(o2);
+            }
+        });
+
+        final List<Integer> lstAfterReverse = Arrays.asList(lstNumberArr);
+
+
+        if (lstAfterReverse.equals(sortedArr)) {
+            System.out.println("yes");
+            System.out.println(String.format("%s %s", left + 1, right + 1));
+        } else {
+            System.out.println("no");
+        }
+
     }
 }
 
 // Phuong phap biet truoc ket qua. Copy & sort into the second array.
 // Find left, and right , continue moving right .
- // If found left, fixed left. Try to find right, continue right to the end.
+// If found left, fixed left. Try to find right, continue right to the end.
 // After that, sort the first array . Then compare with second array
-  // same : YES
-  // difference : NO
+// same : YES
+// difference : NO
 
 // 7 9 6 5 10
 
