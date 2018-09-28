@@ -1,4 +1,4 @@
-package com.alex.algorithm.Session3.onClass.btvn;
+package com.alex.algorithm.Session3.btvn;
 
 import java.util.Arrays;
 import java.util.Collections;
