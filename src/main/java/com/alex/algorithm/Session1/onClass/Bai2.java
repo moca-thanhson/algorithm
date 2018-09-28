@@ -1,3 +1,5 @@
+package com.alex.algorithm.Session1.onClass;
+
 import java.util.Scanner;
 
 /** http://codeforces.com/problemset/problem/518/A */

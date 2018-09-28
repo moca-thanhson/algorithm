@@ -1,4 +1,4 @@
-package week1;
+package com.alex.algorithm.Session1.onClass;
 
 import java.util.HashMap;
 import java.util.Map;

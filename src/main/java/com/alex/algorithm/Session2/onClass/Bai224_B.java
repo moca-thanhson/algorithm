@@ -1,4 +1,4 @@
-package week2.onClass;
+package com.alex.algorithm.Session2.onClass;
 
 import java.util.ArrayList;
 import java.util.List;

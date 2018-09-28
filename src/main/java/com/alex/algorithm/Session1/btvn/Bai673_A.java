@@ -1,4 +1,4 @@
-package week1.btvn;
+package com.alex.algorithm.Session1.btvn;
 
 import java.util.Arrays;
 import java.util.List;
