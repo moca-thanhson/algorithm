@@ -1,34 +1,14 @@
 package com.alex.algorithm.Session3.btvn;
 
-import com.alex.algorithm.Session2.onClass.NumberUtil;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
-/**
- *
- *
- * <pre>
- * 3 5 3 4 5
- * step 1 : sorting increase
- *  3 3 4 5 5
- *  step 2 :
- *   - declare Map<Number, countRating> mapRating
- *   - iterator : i from index = 0 -> length
- *     int countAppear++
- *     if(a[i + 1] > a[i]) {
- *       mapRating.put(a[i], (sum - i) + 1);
- *      //number of students higher + 1 as defined fomula in exam
- *     }
- *   - step 3 :
- *     Count i : from index = 0 => length of listRating
- *     Show value by : map.get(i) -> value as (sum-i_
- * </pre>
- */
 public class Bai551_A {
 
   public static void main(final String[] args) {
@@ -41,21 +21,32 @@ public class Bai551_A {
     Collections.sort(sortingRating);
 
     final Map<Integer, Integer> mapRateToCountHigherRates = new HashMap<>();
-    for (int currentIndex = 0; currentIndex < sortingRating.size() - 1; currentIndex++) {
-      final int currentRating = sortingRating.get(currentIndex);
-      final int nextRating = sortingRating.get(currentIndex + 1);
-      if (currentRating < nextRating) {
-        final int higherRating = allRatings - currentIndex; // as formula higher rating + 1
-        mapRateToCountHigherRates.put(currentRating, higherRating);
+    for (int currentIndex = 0; currentIndex < sortingRating.size(); currentIndex++) {
+      if (currentIndex == sortingRating.size() - 1) {
+        final int lastRating = sortingRating.get(currentIndex);
+        mapRateToCountHigherRates.put(lastRating, 1);
+      } else {
+        final int currentRating = sortingRating.get(currentIndex);
+        final int nextRating = sortingRating.get(currentIndex + 1);
+        if (currentRating < nextRating) {
+          final int higherRating = allRatings - currentIndex; // as formula higher rating + 1
+          mapRateToCountHigherRates.put(currentRating, higherRating);
+        }
       }
     }
-
-    // handle last position
-    final int lastRating = originalRatings.get(allRatings - 1);
-    mapRateToCountHigherRates.put(lastRating, 1);
 
     // print result
     originalRatings.forEach(
         rating -> System.out.print(mapRateToCountHigherRates.get(rating) + " "));
+  }
+
+  static class NumberUtil {
+
+    static List<Integer> convertByString(final String str) {
+      return Arrays.asList(str.split(" "))
+          .stream()
+          .map(interestStr -> Integer.valueOf(interestStr))
+          .collect(Collectors.toList());
+    }
   }
 }
