@@ -44,6 +44,7 @@ public class Bai439_B {
           .stream()
           .map(interestStr -> Integer.valueOf(interestStr))
           .collect(Collectors.toList());
+
     }
   }
 }
