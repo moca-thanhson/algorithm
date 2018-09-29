@@ -1,4 +1,4 @@
-package com.alex.algorithm.Session4.onClass;
+package com.alex.algorithm.Session4.onclass;
 
 /**
  * https://www.spoj.com/problems/STPAR/
