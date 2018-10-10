@@ -47,8 +47,8 @@ public class Bai557_B {
         if (sizeCupForBoy == sizeCupForGirl) {
             littresForBothGirlAndBoy = littresForBothGirlAndBoy / (3 * sizeCupForBoy);
         } else { //sizeCupBoy > sizeCupGirl
-            x* 2 + 2x * 4 <= (18 / 3) = 6
-                x * a1 + 2x * a2 <= 6
+//            x* 2 + 2x * 4 <= (18 / 3) = 6
+//                x * a1 + 2x * a2 <= 6
         }
 
 
