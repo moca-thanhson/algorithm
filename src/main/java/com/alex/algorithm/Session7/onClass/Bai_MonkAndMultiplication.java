@@ -15,31 +15,54 @@ import java.util.stream.Collectors;
 public class Bai_MonkAndMultiplication {
 
     private static final int REQUIRED_INDEX = 3;
+    private static final String DEF_OUTPUT = "-1";
+
+    private static int MAX = 100005;
+    private static Long[] arr = new Long[MAX];
+
 
     public static void main(final String[] args) {
 
         final Scanner scanner = new Scanner(System.in);
 
         final int totalOfNum = Integer.valueOf(scanner.nextLine());
-        final List<Integer> numbers = NumberUtil.convertByString(scanner.nextLine());
-
-        final PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(new MaxComparator());
-        numbers.forEach(
-                num -> priorityQueue.add(num)
-        );
-
-
-        int prevNum1;
-        int prevNum2;
-        while (!priorityQueue.isEmpty()) {
-            final int currNum = priorityQueue.remove();
-            prevNum1 = priorityQueue.remove();
-            prevNum2 = priorityQueue.remove();
-
-            System.out.println(currNum * prevNum1 * prevNum2 + " ");
+        for (int i = 0; i < totalOfNum; i++) {
+            arr[i] = scanner.nextLong();
         }
 
-        System.out.print("-1 -1");
+        final PriorityQueue<Long> queue = new PriorityQueue<>(new Comparator<Long>() {
+            @Override
+            public int compare(Long o1, Long o2) {
+                return o2.compareTo(o1);
+            }
+        });
+
+        //traverse priority queue
+        for (int i = 0; i < totalOfNum; i++) {
+            queue.add(arr[i]);
+            if (i < REQUIRED_INDEX - 1) {
+                System.out.println(DEF_OUTPUT);
+            } else {
+                final List<Long> threeTopNumbers = new ArrayList<>();
+
+                int count = 0;
+                long sum = 0;
+                while (count < REQUIRED_INDEX) {
+                    final long num = queue.peek();
+                    threeTopNumbers.add(num);
+                    queue.remove(); //move to next number;
+
+                    sum += num; //update sum
+                    count++;
+                }
+                System.out.println(sum); //output sum
+
+                //add these number again into queue
+                queue.addAll(threeTopNumbers);
+
+            }
+        }
+
 
     }
 
@@ -52,10 +75,4 @@ public class Bai_MonkAndMultiplication {
 
     }
 
-    static class MaxComparator implements Comparator<Integer> {
-        @Override
-        public int compare(Integer o1, Integer o2) {
-            return o2.compareTo(o1);
-        }
-    }
 }
