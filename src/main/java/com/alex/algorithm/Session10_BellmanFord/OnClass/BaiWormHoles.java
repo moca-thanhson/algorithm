@@ -1,7 +1,6 @@
-package com.alex.algorithm.Session9_BellmanFord.OnClass;
+package com.alex.algorithm.Session10_BellmanFord.OnClass;
 
 import com.alex.algorithm.NumberUtil;
-import com.sun.javafx.geom.Edge;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,49 +8,32 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * It helps to find the path from one vertext -> the rest vertices within weight can be negative or positive values.
- * <p>
- * Complexity O(E.V) <br/>
- * E : number of Edges
- * V : number of Vertices
+ * https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=499
  */
-public class BellmanFordUtil {
+public class BaiWormHoles {
 
     public static final int NOT_ANY_SRC = -1;
     static int numOfVertices, numOfEdges;
-    static int[] dist, path;
-    static List<Edge> graph = new ArrayList<>();
+    static int[] dist;
+    static List<Hole> graph = new ArrayList<>();
+    static int[] targetDistricts;
 
     public static void main(final String[] args) {
+
         initData();
 
-        int sourceNode = 0, targetNode = 4;
+        int sourceNode = 0;
         boolean result = bellmanFord(sourceNode);
         if (result == false) {
-            System.out.println("Graph contains negative weight cycle");
+            System.out.println("possible");
         } else {
-            System.out.println(String.format("\n================\nCost from %s --> %s is %s", sourceNode, targetNode,
-                    dist[targetNode]));
+            System.out.println("not possible");
         }
-
-        //show path
-        for (int i = 0; i < path.length; i++) {
-            System.out.print(i + "-->" + path[i] + ",");
-        }
-
-        System.out.println(String.format("\nPath from %s --> %s is:", sourceNode, targetNode));
-        int endNode = targetNode;
-        while (endNode != sourceNode) {
-            System.out.print(endNode + "-->");
-            endNode = path[endNode];
-        }
-        System.out.println(endNode);
 
     }
 
 
     public static boolean bellmanFord(int currentNode) {
-
         // init distance to itself source node equal 0 instead of Integer.MAX as initial.
         dist[currentNode] = 0;
 
@@ -69,7 +51,6 @@ public class BellmanFordUtil {
                 if (dist[srcNode] != Integer.MAX_VALUE &&
                         (dist[srcNode] + weight < dist[targetNode])) {
                     dist[targetNode] = dist[srcNode] + weight;
-                    path[targetNode] = srcNode;
                 }
             }
         }
@@ -88,6 +69,7 @@ public class BellmanFordUtil {
         return true;
     }
 
+
     private static void initData() {
         final Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter number of vertices, number of edges:");
@@ -102,32 +84,39 @@ public class BellmanFordUtil {
             int srcVertex = dataLine.get(0);
             int destVertext = dataLine.get(1);
             int weight = dataLine.get(2);
-            graph.add(new Edge(srcVertex, destVertext, weight));
+            graph.add(new Hole(srcVertex, destVertext, weight));
+        }
+
+        System.out.println("Please enter number of destination district");
+        int numOfTargetNodes = scanner.nextInt();
+        targetDistricts = new int[numOfTargetNodes];
+        for (int i = 0; i < targetDistricts.length; i++) {
+            System.out.print("Pls enter target district:");
+            targetDistricts[i] = scanner.nextInt();
         }
 
         //Init for dist and path
         dist = new int[numOfVertices];
-        path = new int[numOfEdges];
         Arrays.fill(dist, Integer.MAX_VALUE);
-        Arrays.fill(path, NOT_ANY_SRC);
 
         //print
         System.out.println("Graph is");
         graph.forEach(
                 item -> System.out.println(item.source + " " + item.target + " " + item.weight)
         );
-        System.out.println("Initial path");
-        for (int i = 0; i < path.length; i++) {
-            System.out.print(path[i] + " ");
+
+        System.out.println("List target districts");
+        for (int i = 0; i < targetDistricts.length; i++) {
+            System.out.print(targetDistricts[i] + " ");
         }
     }
 
-    static class Edge {
+    static class Hole {
         public int source;
         public int target;
         public int weight;
 
-        public Edge(int source, int target, int weight) {
+        public Hole(int source, int target, int weight) {
             this.source = source;
             this.target = target;
             this.weight = weight;

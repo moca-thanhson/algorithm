@@ -1,4 +1,4 @@
-package com.alex.algorithm.Session9_BellmanFord.OnClass;
+package com.alex.algorithm.Session10_BellmanFord.OnClass;
 
 import com.alex.algorithm.NumberUtil;
 
@@ -75,7 +75,7 @@ public class BaiExtendedTraffice {
     private static void initData() {
         final Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter number of districts:");
-        numOfVertices = scanner.nextInt();
+        numOfVertices = Integer.valueOf(scanner.nextLine());
 
         System.out.print("Please enter busies of districts:");
         final List<Integer> costAllDistricts = NumberUtil.convertByString(scanner.nextLine());
