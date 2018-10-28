@@ -32,5 +32,9 @@ Sample Output:
 1
 1
 =============Hack Random Number Generator===================
-
+Input:
+5 2
+1 5 3 4 2
+Output:
+3
 

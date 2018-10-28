@@ -10,6 +10,7 @@ public class BaiHackRndm {
     public static void main(final String[] args) {
         final Scanner scanner = new Scanner(System.in);
 
+
     }
 
 }
