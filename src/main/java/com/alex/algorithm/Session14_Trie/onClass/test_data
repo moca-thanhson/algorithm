@@ -1,0 +1,31 @@
+========= Bai Search Enginee=============
+Source: https://www.hackerearth.com/practice/data-structures/advanced-data-structures/trie-keyword-tree/practice-problems/algorithm/search-engine/
+
+INPUT:
+2 1
+hackerearth 10
+hackerrank 9
+hacker
+OUTPUT:
+10
+
+============Bai DNA=========================
+INPUT
+3
+4
+ACGT
+ACGTGCGT
+ACCGTGC
+ACGCCGT
+3
+CGCGCGCGCGCGCCCCGCCCGCGC
+CGCGCGCGCGCGCCCCGCCCGCAC
+CGCGCGCGCGCGCCCCGCCCGCTC
+2
+CGCGCCGCGCGCGCGCGCGC
+GGCGCCGCGCGCGCGCGCTC
+
+OUTPUT:
+Case 1: 9
+Case 2: 66
+Case 3: 20
