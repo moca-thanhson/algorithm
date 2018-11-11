@@ -1,0 +1,13 @@
+- 1 cây khung nhỏ nhì là :
+  + Phải Khác cây khung nhỏ nhất
+     + Nếu thỏa điều trên, phải là cây khung có trọng số nhỏ nhất.
+
+B1: Input data
+
+B2 : Chạy Prim -> MST
+
+B3: Với mỗi cạnh (u,v) thuộc MST :
+  + Tạm bỏ (u,v)
+  + Chạy Prim -> MST 2
+  + So sánh MST2 để tim min
+  + Bỏ vào trở lại (u,v)
